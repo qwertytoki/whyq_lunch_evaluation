@@ -2,15 +2,18 @@
   "name": "whyq_lunch_evaluation",
   "version": "1.0.0",
   "description": "evaluate weekly lunch to improve our lunch choice.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.12",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }
 }
