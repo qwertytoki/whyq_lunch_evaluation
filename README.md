@@ -2,18 +2,20 @@
 
 evaluate weekly lunch to improve our lunch choice. 
 
-Rough introductions
+## Rough introductions
 
-[Lunch list with evaluation points]
-1 Get Next week's Company's Lunch menus weekly, every Monday 9am(Batch)
-2 Show next week's menu with evaluation points, points are 1.0 ~ 5.0 
-3 we can see comments in every lunch menus when user click the menu
+### Lunch list with evaluation points
 
-[Ranking of Lunch]
-we can see overall ranking of lunch.
+1. Get Next week's Company's Lunch menus weekly, every Monday 9am(Batch)
+2. Show next week's menu with evaluation points, points are 1.0 ~ 5.0 
+3. we can see comments in every lunch menus when user click the menu
 
-[Evaluate lunch]
-1 User can see today's lunch list
-2 select the lunch 
-3 evaluate with comment. evaluate is 1.0~5.0 points
+### Ranking of Lunch
+
+1. we can see overall ranking of lunch.
+
+### Evaluate daily lunch
+1. User can see today's lunch list
+2. select the lunch 
+3. evaluate with comment. evaluate is 1.0~5.0 points
 
