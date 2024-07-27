@@ -19,3 +19,12 @@ evaluate weekly lunch to improve our lunch choice.
 2. select the lunch 
 3. evaluate with comment. evaluate is 1.0~5.0 points
 
+
+## Tech Stack
+
+BackEnd: Node.js + TypeScript, Express framework  
+FrontEnd: React.js  
+Database: CloudSQL
+Deploy: GCP  
+Batch: Selenium + Python  
+
