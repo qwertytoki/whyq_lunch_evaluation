@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { getMenuItems } from "../menuItems";
+import { MenuDetail } from "../entitiies/MenuDetail";
 
 const router = Router();
 
@@ -14,7 +15,14 @@ router.get('/menu/:id', (req, res) => {
     const parsedId = parseInt(id);
     const menu = menuItems.find(item => item.id === (isNaN(parsedId) ? -1 : parsedId));
     if (menu) {
-        res.json(menu);
+        const menuDetail = new MenuDetail(
+            menu.id, 
+            menu.name, 
+            menu.store_name, 
+            menu.review_score, 
+            menu.photo_url, 
+            [], []);
+        res.json(menuDetail);
     } else {
         res.status(404).json({ message: "Menu not found" });
     }
