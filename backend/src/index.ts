@@ -1,6 +1,9 @@
 import express from 'express';
+import menuRoutes from './routes/menuRoutes';
 
 const app = express();
+
+app.use(menuRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
