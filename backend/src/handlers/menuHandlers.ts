@@ -4,8 +4,8 @@ const menuService = new MenuService();
 
 import { Request, Response } from "express";
 
-export const getMenuItems = (req: Request, res: Response) => {
-    const menuItems = menuService.getMenuItems();
+export const getMenuItems = async (req: Request, res: Response) => {
+    const menuItems =  await menuService.getMenuItems();    
     res.json(menuItems);
 }
 

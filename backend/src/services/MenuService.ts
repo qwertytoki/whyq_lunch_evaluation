@@ -2,22 +2,14 @@ import { Firestore } from "@google-cloud/firestore";
 import { Menu } from "../entitiies/Menu";
 import { MenuDetail } from "../entitiies/MenuDetail";
 import dotenv from "dotenv";
+import { MenuDataAccess } from "../dataaccess/MenuDataAccess";
 
-dotenv.config();
-const firestore = new Firestore({
-    projectId: process.env.GOOGLE_CLOUD_PROJECT,
-    keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
-});
+const menuDataAccess = new MenuDataAccess();
 
 export class MenuService {
 
     async getMenuItems(): Promise<Menu[]> {
-        const snapshot = await firestore.collection('menuItems').get();
-        const menuItems = snapshot.docs.map(doc => {
-            const data = doc.data();
-            return new Menu(data.id, data.name, data.store_name, data.review_score, data.photo_url);
-        });
-        return menuItems;
+        return await menuDataAccess.getMenuItems();
     }
 
     getMenuDetail(id: number): Menu | null {
