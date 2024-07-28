@@ -9,14 +9,9 @@ export const getMenuItems = async (req: Request, res: Response) => {
   res.json(menuItems);
 };
 
-export const getMenuDetails = (req: Request, res: Response) => {
+export const getMenuDetails = async (req: Request, res: Response) => {
   const menuId = req.params.id;
-  const persedId = parseInt(menuId);
-  if (isNaN(persedId)) {
-    res.status(400).json({ error: 'Invalid menu id' });
-    return;
-  }
-  const menuDetails = menuService.getMenuDetail(persedId);
+  const menuDetails = await menuService.getMenuDetail(menuId);
   if (menuDetails === null) {
     res.status(404).json({ error: 'Menu not found' });
     return;

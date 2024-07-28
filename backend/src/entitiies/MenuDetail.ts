@@ -1,5 +1,5 @@
 export class MenuDetail {
-  id: number;
+  id: string;
   name: string;
   store_name: string;
   review_score: number;
@@ -8,7 +8,7 @@ export class MenuDetail {
   listed_history: Date[];
 
   constructor(
-    id: number,
+    id: string,
     name: string,
     store_name: string,
     review_score: number,
