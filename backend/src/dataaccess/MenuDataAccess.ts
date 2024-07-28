@@ -45,22 +45,4 @@ export class MenuDataAccess {
             data.photo_url,
         );
     }
-
-    async getMenuDetail(id: string): Promise<MenuDetail | null> {
-        return null;
-        //     const snapshot = await firestore.collection('menuItems').doc(id.toString()).get();
-        //     if (!snapshot.exists) {
-        //         return null;
-        //     }
-        //     const data = snapshot.data();
-        //     return new MenuDetail(
-        //         data.id,
-        //         data.name,
-        //         data.store_name,
-        //         data.review_score,
-        //         data.photo_url,
-        //         data.review_comments,
-        //         data.listed_history
-        //     );
-    }
 }
