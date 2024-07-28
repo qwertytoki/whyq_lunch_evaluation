@@ -9,11 +9,9 @@ export class MenuService {
         return await menuDataAccess.getMenuItems();
     }
 
-    async getMenuDetail(id: string): Promise<MenuDetail | null> {
-        const menuItems = await this.getMenuItems();
-        console.log(menuItems);
-
-        const menu = menuItems.find((item: Menu) => item.id === id);
+    async getMenuDetails(id: string): Promise<MenuDetail | undefined> {
+        const menu = await menuDataAccess.getMenuItemsById(id);
+        console.log(menu);
         if (menu) {
             return new MenuDetail(
                 menu.id,
@@ -25,6 +23,5 @@ export class MenuService {
                 [], // listed_history
             );
         }
-        return null;
     }
 }

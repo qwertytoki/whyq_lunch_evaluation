@@ -11,8 +11,8 @@ export const getMenuItems = async (req: Request, res: Response) => {
 
 export const getMenuDetails = async (req: Request, res: Response) => {
     const menuId = req.params.id;
-    const menuDetails = await menuService.gtMenuDetail(menuId);
-    if (menuDetails === null) {
+    const menuDetails = await menuService.getMenuDetails(menuId);
+    if (menuDetails === undefined) {
         res.status(404).json({ error: 'Menu not found' });
         return;
     }
