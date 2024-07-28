@@ -6,10 +6,10 @@ const app = express();
 app.use(menuRoutes);
 
 app.get('/health', (req, res) => {
-  res.send('Hello World!');
+    res.send('Hello World!');
 });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
