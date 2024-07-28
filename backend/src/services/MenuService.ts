@@ -2,6 +2,7 @@ import { Menu } from '../entitiies/Menu';
 import { MenuDetail } from '../entitiies/MenuDetail';
 import { MenuDataAccess } from '../dataaccess/MenuDataAccess';
 import { ReviewDataAccess } from '../dataaccess/ReviewDataAccess';
+import { DailyLunchMenus } from '../entitiies/DailyLunchMenus';
 
 const menuDataAccess = new MenuDataAccess();
 const reviewDataAccess = new ReviewDataAccess();
@@ -27,5 +28,9 @@ export class MenuService {
                 listed_history,
             );
         }
+    }
+
+    async getDailyLunchMenus(dateString: string): Promise<DailyLunchMenus> {
+        return await menuDataAccess.getDailyLunchMenus(dateString);
     }
 }

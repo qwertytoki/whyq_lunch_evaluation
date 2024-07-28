@@ -18,3 +18,18 @@ export const getMenuDetails = async (req: Request, res: Response) => {
     }
     res.json(menuDetails);
 };
+
+export const getDailyLunchMenus = async (req: Request, res: Response) => {
+    let dateString = req.query.date as string;
+
+    if (!dateString) {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        dateString = `${year}-${month}-${day}`;
+    }
+    console.log(dateString);
+    const dailyLunchMenus = await menuService.getDailyLunchMenus(dateString);
+    res.json(dailyLunchMenus);
+};

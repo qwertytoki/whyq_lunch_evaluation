@@ -1,11 +1,11 @@
 import { Menu } from './Menu';
 
 export class DailyLunchMenus {
-    date: Date;
+    dateString: string;
     menus: Menu[];
 
-    constructor(date: Date, menus: Menu[]) {
-        this.date = date;
+    constructor(dateString: string, menus: Menu[]) {
+        this.dateString = dateString;
         this.menus = menus;
     }
 }
