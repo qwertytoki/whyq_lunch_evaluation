@@ -9,3 +9,9 @@ export const getReviewByMenuId = async (req: Request, res: Response) => {
     const reviews = await reviewService.getReviewByMenuId(menuId);
     res.json(reviews);
 };
+
+export const postReview = async (req: Request, res: Response) => {
+    const review = req.body;
+    await reviewService.postReview(review);
+    res.json({ message: 'Review posted' });
+};

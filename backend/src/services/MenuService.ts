@@ -16,7 +16,6 @@ export class MenuService {
         const reviews = await reviewDataAccess.getReviewByMenuId(id);
         const review_comments = reviews.map((review) => review.review_comment);
         const listed_history = reviews.map((review) => review.date);
-        console.log(menu);
         if (menu) {
             return new MenuDetail(
                 menu.id,

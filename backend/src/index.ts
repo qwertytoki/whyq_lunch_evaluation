@@ -3,6 +3,7 @@ import menuRoutes from './routes/menuRoutes';
 import reviewRoutes from './routes/reviewRoutes';
 
 const app = express();
+app.use(express.json());
 
 app.use(menuRoutes);
 app.use(reviewRoutes);

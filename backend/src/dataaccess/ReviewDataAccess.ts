@@ -20,9 +20,18 @@ export class ReviewDataAccess {
                 doc.id,
                 data.menu_id,
                 data.review_comment,
+                data.review_score,
                 data.date.toDate(),
             );
         });
         return reviews;
+    }
+    async postReview(review: Review): Promise<void> {
+        await firestore.collection('reviews').add({
+            menu_id: review.menu_id,
+            review_comment: review.review_comment,
+            review_score: review.review_score,
+            date: new Date(),
+        });
     }
 }
