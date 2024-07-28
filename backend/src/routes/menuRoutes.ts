@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { getMenuDetails, getMenuItems } from "../handlers/menuHandlers";
+import { Router } from 'express';
+import { getMenuDetails, getMenuItems } from '../handlers/menuHandlers';
 
 const router = Router();
 
