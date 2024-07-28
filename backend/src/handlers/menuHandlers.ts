@@ -29,7 +29,6 @@ export const getDailyLunchMenus = async (req: Request, res: Response) => {
         const day = String(today.getDate()).padStart(2, '0');
         dateString = `${year}-${month}-${day}`;
     }
-    console.log(dateString);
     const dailyLunchMenus = await menuService.getDailyLunchMenus(dateString);
     res.json(dailyLunchMenus);
 };

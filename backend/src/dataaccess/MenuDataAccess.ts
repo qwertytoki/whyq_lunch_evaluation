@@ -73,7 +73,7 @@ export class MenuDataAccess {
     async getDailyLunchMenus(dateString: string): Promise<DailyLunchMenus> {
         const snapshot = await firestore
             .collection('dailyLunchMenus')
-            .where('date', '==', dateString)
+            .where('date_string', '==', dateString)
             .get();
         if (snapshot.empty) {
             return new DailyLunchMenus(dateString, []);
