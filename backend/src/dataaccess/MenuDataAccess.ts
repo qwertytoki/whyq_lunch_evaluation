@@ -15,7 +15,7 @@ export class MenuDataAccess {
     const menuItems = snapshot.docs.map((doc) => {
       const data = doc.data();
       return new Menu(
-        data.id,
+        doc.id,
         data.name,
         data.store_name,
         data.review_score,
