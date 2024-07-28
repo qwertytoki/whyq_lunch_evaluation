@@ -1,27 +1,27 @@
 export class MenuDetail {
     id: string;
     name: string;
-    store_name: string;
-    review_score: number;
-    photo_url: string;
-    review_comments: string[];
+    storeName: string;
+    reviewScore: number;
+    photoUrl: string;
+    reviewComments: string[];
     listed_history: Date[];
 
     constructor(
         id: string,
         name: string,
-        store_name: string,
-        review_score: number,
-        photo_url: string,
-        review_comments: string[],
+        storeName: string,
+        reviewScore: number,
+        photoUrl: string,
+        reviewComments: string[],
         listed_history: Date[],
     ) {
         this.id = id;
         this.name = name;
-        this.store_name = store_name;
-        this.review_score = review_score;
-        this.photo_url = photo_url;
-        this.review_comments = review_comments;
+        this.storeName = storeName;
+        this.reviewScore = reviewScore;
+        this.photoUrl = photoUrl;
+        this.reviewComments = reviewComments;
         this.listed_history = listed_history;
     }
 }

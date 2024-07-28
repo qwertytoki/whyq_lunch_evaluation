@@ -15,16 +15,16 @@ export class MenuService {
     async getMenuDetails(id: string): Promise<MenuDetail | undefined> {
         const menu = await menuDataAccess.getMenuItemsById(id);
         const reviews = await reviewDataAccess.getReviewByMenuId(id);
-        const review_comments = reviews.map((review) => review.review_comment);
+        const reviewComments = reviews.map((review) => review.reviewComment);
         const listed_history = reviews.map((review) => review.date);
         if (menu) {
             return new MenuDetail(
                 menu.id,
                 menu.name,
-                menu.store_name,
-                menu.review_score,
-                menu.photo_url,
-                review_comments,
+                menu.storeName,
+                menu.reviewScore,
+                menu.photoUrl,
+                reviewComments,
                 listed_history,
             );
         }
