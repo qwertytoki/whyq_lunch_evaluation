@@ -1,6 +1,5 @@
 import { Firestore } from '@google-cloud/firestore';
 import { Menu } from '../entitiies/Menu';
-import { MenuDetail } from '../entitiies/MenuDetail';
 import dotenv from 'dotenv';
 
 dotenv.config();
