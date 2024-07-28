@@ -1,8 +1,10 @@
 import { Menu } from '../entitiies/Menu';
 import { MenuDetail } from '../entitiies/MenuDetail';
 import { MenuDataAccess } from '../dataaccess/MenuDataAccess';
+import { ReviewDataAccess } from '../dataaccess/ReviewDataAccess';
 
 const menuDataAccess = new MenuDataAccess();
+const reviewDataAccess = new ReviewDataAccess();
 
 export class MenuService {
     async getMenuItems(): Promise<Menu[]> {
@@ -11,6 +13,9 @@ export class MenuService {
 
     async getMenuDetails(id: string): Promise<MenuDetail | undefined> {
         const menu = await menuDataAccess.getMenuItemsById(id);
+        const reviews = await reviewDataAccess.getReviewByMenuId(id);
+        const review_comments = reviews.map((review) => review.review_comment);
+        const listed_history = reviews.map((review) => review.date);
         console.log(menu);
         if (menu) {
             return new MenuDetail(
@@ -19,8 +24,8 @@ export class MenuService {
                 menu.store_name,
                 menu.review_score,
                 menu.photo_url,
-                [], // review_comments
-                [], // listed_history
+                review_comments,
+                listed_history,
             );
         }
     }
