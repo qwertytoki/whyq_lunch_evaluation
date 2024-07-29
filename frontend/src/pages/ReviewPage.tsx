@@ -79,6 +79,26 @@ const ReviewPage: React.FC = () => {
           `${currentDate.toISOString().split('T')[0]}_${selectedMenu}`,
           'true',
         );
+
+        // 入力欄、選択肢をリセット
+        setReviewComment('');
+        setSelectedMenu(null);
+        setReviewScore(3.0);
+
+        // メッセージ表示
+        const submitMessage = document.createElement('div');
+        submitMessage.textContent = 'Submitted!';
+        submitMessage.style.position = 'fixed';
+        submitMessage.style.bottom = '10px';
+        submitMessage.style.left = '10px';
+        submitMessage.style.backgroundColor = 'black';
+        submitMessage.style.color = 'white';
+        submitMessage.style.padding = '10px';
+        submitMessage.style.borderRadius = '5px';
+        document.body.appendChild(submitMessage);
+        setTimeout(() => {
+          submitMessage.remove();
+        }, 3000);
       } catch (error) {
         console.error('Error submitting review:', error);
       }
@@ -115,7 +135,11 @@ const ReviewPage: React.FC = () => {
         </button>
       </div>
       <div className="review-form">
-        <select onChange={handleMenuChange} disabled={submitted}>
+        <select
+          onChange={handleMenuChange}
+          value={selectedMenu || ''}
+          disabled={submitted}
+        >
           <option value="">Select a menu</option>
           {dailyMenu.map((menu) => (
             <option key={menu.id} value={menu.id}>
@@ -134,7 +158,7 @@ const ReviewPage: React.FC = () => {
             onChange={handleSliderChange}
             className="slider"
           />
-          <span className="slider-value">{reviewScore}</span> {}
+          <span className="slider-value">{reviewScore.toFixed(1)}</span>
         </div>
 
         <textarea
