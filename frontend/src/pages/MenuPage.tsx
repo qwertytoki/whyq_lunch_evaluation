@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 import '../styles/MenuPage.css';
+import Header from '../components/Header';
 
 interface Menu {
   id: string;
@@ -99,6 +101,7 @@ const MenuPage: React.FC = () => {
 
   return (
     <div className="menu-page-container">
+      <Header />
       <div className="menu-page-header">
         <button onClick={handlePreviousWeek}>≪</button>
         <button onClick={handlePreviousDay}>←</button>

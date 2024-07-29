@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import '../styles/ReviewPage.css';
 import SubmitMessage from '../components/SubmitMessage';
+import Header from '../components/Header';
 
 interface Menu {
   id: string;
@@ -119,6 +120,7 @@ const ReviewPage: React.FC = () => {
   const today = new Date();
   return (
     <div className="menu-page-container">
+      <Header />
       <div className="menu-page-header">
         <button onClick={handlePreviousDay}>←</button>
         <div>{getDayString(currentDate)}</div>

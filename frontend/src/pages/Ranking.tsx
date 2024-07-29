@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 import '../styles/Ranking.css';
+import Header from '../components/Header';
 
 interface Menu {
   id: string;
@@ -41,6 +43,7 @@ const Ranking: React.FC = () => {
 
   return (
     <div className="ranking-container">
+      <Header />
       <h1>Menu Ranking</h1>
       <div>
         {menus.map((menu) => (
