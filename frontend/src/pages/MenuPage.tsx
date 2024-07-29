@@ -15,6 +15,8 @@ interface DailyMenu {
   menus: Menu[];
 }
 
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
 const MenuPage: React.FC = () => {
   const [dailyMenu, setDailyMenu] = useState<DailyMenu | null>(null);
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
@@ -22,9 +24,7 @@ const MenuPage: React.FC = () => {
 
   const fetchDailyMenu = async (date: string) => {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/menu/daily?date=${date}`,
-      );
+      const response = await axios.get(`${apiBaseUrl}/menu/daily?date=${date}`);
       setDailyMenu(response.data);
     } catch (error) {
       console.error('Error fetching daily menu:', error);
@@ -74,7 +74,6 @@ const MenuPage: React.FC = () => {
     return date.toLocaleDateString(undefined, options);
   };
 
-  // キーボードイベントをリスン
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft') {
