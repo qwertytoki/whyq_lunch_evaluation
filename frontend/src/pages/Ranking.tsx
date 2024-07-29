@@ -13,10 +13,11 @@ interface Menu {
 const Ranking: React.FC = () => {
   const [menus, setMenus] = useState<Menu[]>([]);
   const navigate = useNavigate();
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/menu')
+      .get(`${apiBaseUrl}/menu`)
       .then((response) => {
         setMenus(response.data);
       })
