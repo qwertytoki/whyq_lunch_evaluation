@@ -72,6 +72,22 @@ const MenuPage: React.FC = () => {
     return date.toLocaleDateString(undefined, options);
   };
 
+  // キーボードイベントをリスン
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        handlePreviousDay();
+      } else if (event.key === 'ArrowRight') {
+        handleNextDay();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentDate]);
+
   if (!dailyMenu) {
     return <div>Loading...</div>;
   }
