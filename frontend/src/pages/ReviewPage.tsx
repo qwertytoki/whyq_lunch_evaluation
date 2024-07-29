@@ -80,12 +80,10 @@ const ReviewPage: React.FC = () => {
           'true',
         );
 
-        // 入力欄、選択肢をリセット
         setReviewComment('');
         setSelectedMenu(null);
         setReviewScore(3.0);
 
-        // メッセージ表示
         const submitMessage = document.createElement('div');
         submitMessage.textContent = 'Submitted!';
         submitMessage.style.position = 'fixed';

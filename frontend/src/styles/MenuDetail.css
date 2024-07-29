@@ -1,104 +1,108 @@
 .menu-detail-container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-name {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.review-score {
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.menu-content {
+  display: flex;
+}
+
+.menu-photo {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.menu-info {
+  flex-grow: 1;
+}
+
+.review-comments,
+.listed-history {
+  margin-top: 20px;
+}
+
+.review-comment,
+.listed-date {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.review-comments h2,
+.listed-history h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.review-comment {
+  border: 1px solid #ddd;
+}
+
+.listed-date {
+  border: 1px solid #ddd;
+}
+
+/* モバイル表示に対応するためのメディアクエリ */
+@media (max-width: 768px) {
+  .menu-detail-container {
+    width: 90%;
+    padding: 10px;
   }
-  
+
   .menu-header {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-score {
+    margin-top: 10px;
+  }
+
+  .menu-content {
+    flex-direction: column;
     align-items: center;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+  }
+
+  .menu-photo {
+    width: 100%;
+    height: auto;
     margin-bottom: 20px;
   }
-  
-  .menu-name {
-    font-size: 2em;
-    font-weight: bold;
-  }
-  
-  .review-score {
-    font-size: 1.5em;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu-content {
-    display: flex;
-  }
-  
-  .menu-photo {
-    width: 200px;
-    height: 200px;
-    margin-right: 20px;
-  }
-  
+
   .menu-info {
-    flex-grow: 1;
+    width: 100%;
   }
-  
-  .review-comments, .listed-history {
-    margin-top: 20px;
-  }
-  
-  .review-comment, .listed-date {
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-  }
-  
-  .review-comments h2, .listed-history h2 {
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-  }
-  
-  .review-comment {
-    border: 1px solid #ddd;
-  }
-  
+
+  .review-comment,
   .listed-date {
-    border: 1px solid #ddd;
+    width: 100%;
   }
-  
-  /* モバイル表示に対応するためのメディアクエリ */
-  @media (max-width: 768px) {
-    .menu-detail-container {
-      width: 90%;
-      padding: 10px;
-    }
-  
-    .menu-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .review-score {
-      margin-top: 10px;
-    }
-  
-    .menu-content {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .menu-photo {
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-  
-    .menu-info {
-      width: 100%;
-    }
-  
-    .review-comment, .listed-date {
-      width: 100%;
-    }
-  }
+}
