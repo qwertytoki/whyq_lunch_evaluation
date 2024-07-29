@@ -42,11 +42,14 @@ const ReviewPage: React.FC = () => {
   };
 
   const handleNextDay = () => {
+    const today = new Date();
     const newDate = new Date(currentDate);
     do {
       newDate.setDate(newDate.getDate() + 1);
-    } while (newDate.getDay() === 0 || newDate.getDay() === 6);
-    setCurrentDate(newDate);
+    } while (newDate.getDay() === 0 || newDate.getDay() === 6); // Skip weekends
+    if (newDate <= today) {
+      setCurrentDate(newDate);
+    }
   };
 
   const handleMenuChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -93,13 +96,23 @@ const ReviewPage: React.FC = () => {
   };
 
   const isSubmitDisabled = !selectedMenu || reviewScore === null || submitted;
-
+  const today = new Date();
   return (
     <div className="menu-page-container">
       <div className="menu-page-header">
         <button onClick={handlePreviousDay}>←</button>
         <div>{getDayString(currentDate)}</div>
-        <button onClick={handleNextDay}>→</button>
+        <button
+          onClick={handleNextDay}
+          className={
+            currentDate.toDateString() === today.toDateString()
+              ? 'button-disabled'
+              : ''
+          }
+          disabled={currentDate.toDateString() === today.toDateString()}
+        >
+          →
+        </button>
       </div>
       <div className="review-form">
         <select onChange={handleMenuChange} disabled={submitted}>

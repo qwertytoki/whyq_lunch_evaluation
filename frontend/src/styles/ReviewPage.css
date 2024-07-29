@@ -46,3 +46,8 @@
     height: 100px;
     resize: none;
   }
+  
+  .button-disabled {
+    color: grey;
+    cursor: not-allowed;
+  }
