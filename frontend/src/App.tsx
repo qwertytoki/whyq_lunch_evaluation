@@ -5,16 +5,17 @@ import Ranking from './pages/Ranking';
 import MenuDetail from './pages/MenuDetail';
 import MenuPage from './pages/MenuPage';
 import ReviewPage from './pages/ReviewPage';
+import Home from './pages/Home';
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/menu/:id" element={<MenuDetail />} />
         <Route path="/review" element={<ReviewPage />} />
-        <Route path="/" element={<div>Home Page</div>} />
       </Routes>
     </Router>
   );
