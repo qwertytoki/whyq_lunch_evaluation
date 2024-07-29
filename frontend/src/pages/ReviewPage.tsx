@@ -70,9 +70,9 @@ const ReviewPage: React.FC = () => {
     if (selectedMenu && reviewScore !== null) {
       try {
         await axios.post(`${process.env.REACT_APP_API_BASE_URL}/review`, {
-          menuId: selectedMenu,
-          reviewScore: reviewScore,
-          reviewComment: reviewComment,
+          menu_id: selectedMenu,
+          review_score: reviewScore,
+          review_comment: reviewComment,
         });
         setSubmitted(true);
         localStorage.setItem(
@@ -113,7 +113,14 @@ const ReviewPage: React.FC = () => {
     return date.toLocaleDateString(undefined, options);
   };
 
-  const isSubmitDisabled = !selectedMenu || reviewScore === null || submitted;
+  const isSubmitDisabled =
+    !selectedMenu ||
+    reviewScore === null ||
+    submitted ||
+    !!localStorage.getItem(
+      `${currentDate.toISOString().split('T')[0]}_${selectedMenu}`,
+    );
+
   const today = new Date();
   return (
     <div className="menu-page-container">
@@ -166,7 +173,12 @@ const ReviewPage: React.FC = () => {
           disabled={submitted}
         />
         <button onClick={handleSubmit} disabled={isSubmitDisabled}>
-          {submitted ? 'You have submitted review' : 'Submit'}
+          {submitted ||
+          localStorage.getItem(
+            `${currentDate.toISOString().split('T')[0]}_${selectedMenu}`,
+          )
+            ? 'You have submitted this day'
+            : 'Submit'}
         </button>
       </div>
     </div>
