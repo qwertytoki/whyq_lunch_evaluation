@@ -79,15 +79,12 @@ const ReviewPage: React.FC = () => {
     if (selectedMenu && reviewScore !== null) {
       try {
         await axios.post(`${process.env.REACT_APP_API_BASE_URL}/review`, {
-          menu_id: selectedMenu,
-          review_score: reviewScore,
-          review_comment: reviewComment,
+          menuId: selectedMenu,
+          reviewScore: reviewScore,
+          reviewComment: reviewComment,
         });
         setSubmitted(true);
-        localStorage.setItem(
-          `${currentDate.toISOString().split('T')[0]}_${selectedMenu}`,
-          'true',
-        );
+        localStorage.setItem(currentDate.toISOString().split('T')[0], 'true');
 
         resetForm();
 
@@ -125,9 +122,7 @@ const ReviewPage: React.FC = () => {
     !selectedMenu ||
     reviewScore === null ||
     submitted ||
-    !!localStorage.getItem(
-      `${currentDate.toISOString().split('T')[0]}_${selectedMenu}`,
-    );
+    !!localStorage.getItem(currentDate.toISOString().split('T')[0]);
 
   const today = new Date();
   return (
@@ -160,7 +155,6 @@ const ReviewPage: React.FC = () => {
             </option>
           ))}
         </select>
-
         <div className="slider-container">
           <input
             type="range"
@@ -173,7 +167,6 @@ const ReviewPage: React.FC = () => {
           />
           <span className="slider-value">{reviewScore.toFixed(1)}</span>
         </div>
-
         <textarea
           placeholder="Write your review here"
           value={reviewComment}
@@ -182,9 +175,7 @@ const ReviewPage: React.FC = () => {
         />
         <button onClick={handleSubmit} disabled={isSubmitDisabled}>
           {submitted ||
-          localStorage.getItem(
-            `${currentDate.toISOString().split('T')[0]}_${selectedMenu}`,
-          )
+          localStorage.getItem(currentDate.toISOString().split('T')[0])
             ? 'You have submitted this day'
             : 'Submit'}
         </button>
