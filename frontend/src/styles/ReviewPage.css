@@ -1,0 +1,48 @@
+.menu-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .menu-page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .menu-page-header button {
+    margin: 0 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+  }
+  
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 600px;
+  }
+  
+  .review-form select,
+  .review-form input,
+  .review-form textarea,
+  .review-form button {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  .review-form button {
+    cursor: pointer;
+  }
+  
+  .review-form textarea {
+    height: 100px;
+    resize: none;
+  }
