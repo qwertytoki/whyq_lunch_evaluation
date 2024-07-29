@@ -33,12 +33,20 @@ const ReviewPage: React.FC = () => {
     fetchDailyMenu(dateString);
   }, [currentDate]);
 
+  const resetForm = () => {
+    setReviewComment('');
+    setSelectedMenu(null);
+    setReviewScore(3.0);
+    setSubmitted(false);
+  };
+
   const handlePreviousDay = () => {
     const newDate = new Date(currentDate);
     do {
       newDate.setDate(newDate.getDate() - 1);
     } while (newDate.getDay() === 0 || newDate.getDay() === 6);
     setCurrentDate(newDate);
+    resetForm();
   };
 
   const handleNextDay = () => {
@@ -49,6 +57,7 @@ const ReviewPage: React.FC = () => {
     } while (newDate.getDay() === 0 || newDate.getDay() === 6); // Skip weekends
     if (newDate <= today) {
       setCurrentDate(newDate);
+      resetForm();
     }
   };
 
@@ -80,10 +89,9 @@ const ReviewPage: React.FC = () => {
           'true',
         );
 
-        setReviewComment('');
-        setSelectedMenu(null);
-        setReviewScore(3.0);
+        resetForm();
 
+        // メッセージ表示
         const submitMessage = document.createElement('div');
         submitMessage.textContent = 'Submitted!';
         submitMessage.style.position = 'fixed';
