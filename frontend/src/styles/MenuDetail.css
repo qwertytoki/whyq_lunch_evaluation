@@ -1,0 +1,51 @@
+.menu-detail-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu-name {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .review-score {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .menu-content {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .menu-photo {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+  }
+  
+  .menu-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .review-comments, .listed-history {
+    margin-top: 20px;
+  }
+  
+  .review-comment, .listed-date {
+    border: 1px solid #000;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
