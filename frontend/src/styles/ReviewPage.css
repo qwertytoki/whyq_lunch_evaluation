@@ -38,15 +38,33 @@
     font-size: 1em;
   }
   
-  .review-form button {
-    cursor: pointer;
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .slider-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* スライダーの幅を増やす */
+  }
+  
+  .slider {
+    flex-grow: 1;
+  }
+  
+  .slider-value {
+    margin-left: 10px;
+    font-size: 1.5em;
   }
   
   .review-form textarea {
     height: 100px;
     resize: none;
   }
-  
+
   .button-disabled {
     color: grey;
     cursor: not-allowed;

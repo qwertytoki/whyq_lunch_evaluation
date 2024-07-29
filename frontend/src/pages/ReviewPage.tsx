@@ -16,6 +16,7 @@ const ReviewPage: React.FC = () => {
   const [reviewScore, setReviewScore] = useState<number | null>(null);
   const [reviewComment, setReviewComment] = useState<string>('');
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [sliderValue, setSliderValue] = useState<number>(3.0);
 
   const fetchDailyMenu = async (date: string) => {
     try {
@@ -64,6 +65,10 @@ const ReviewPage: React.FC = () => {
     event: React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
     setReviewComment(event.target.value);
+  };
+
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSliderValue(parseFloat(event.target.value));
   };
 
   const handleSubmit = async () => {
@@ -123,15 +128,20 @@ const ReviewPage: React.FC = () => {
             </option>
           ))}
         </select>
-        <input
-          type="range"
-          min="1"
-          max="5"
-          step="0.1"
-          value={reviewScore || 0}
-          onChange={handleScoreChange}
-          disabled={submitted}
-        />
+
+        <div className="slider-container">
+          <input
+            type="range"
+            min="1.0"
+            max="5.0"
+            step="0.1"
+            value={sliderValue}
+            onChange={handleSliderChange}
+            className="slider"
+          />
+          <span className="slider-value">{sliderValue}</span>
+        </div>
+
         <textarea
           placeholder="Write your review here"
           value={reviewComment}
