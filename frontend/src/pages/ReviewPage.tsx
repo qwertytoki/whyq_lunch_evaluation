@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/ReviewPage.css';
+import SubmitMessage from '../components/SubmitMessage';
 
 interface Menu {
   id: string;
@@ -16,6 +17,7 @@ const ReviewPage: React.FC = () => {
   const [reviewScore, setReviewScore] = useState<number>(3.0);
   const [reviewComment, setReviewComment] = useState<string>('');
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [showMessage, setShowMessage] = useState<boolean>(false);
 
   const fetchDailyMenu = async (date: string) => {
     try {
@@ -87,20 +89,9 @@ const ReviewPage: React.FC = () => {
         localStorage.setItem(currentDate.toISOString().split('T')[0], 'true');
 
         resetForm();
-
-        // メッセージ表示
-        const submitMessage = document.createElement('div');
-        submitMessage.textContent = 'Submitted!';
-        submitMessage.style.position = 'fixed';
-        submitMessage.style.bottom = '10px';
-        submitMessage.style.left = '10px';
-        submitMessage.style.backgroundColor = 'black';
-        submitMessage.style.color = 'white';
-        submitMessage.style.padding = '10px';
-        submitMessage.style.borderRadius = '5px';
-        document.body.appendChild(submitMessage);
+        setShowMessage(true);
         setTimeout(() => {
-          submitMessage.remove();
+          setShowMessage(false);
         }, 3000);
       } catch (error) {
         console.error('Error submitting review:', error);
@@ -180,6 +171,7 @@ const ReviewPage: React.FC = () => {
             : 'Submit'}
         </button>
       </div>
+      {showMessage && <SubmitMessage message="Submitted!" />}
     </div>
   );
 };
