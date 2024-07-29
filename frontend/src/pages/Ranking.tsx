@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/Ranking.css';
 
 interface Menu {
   id: string;
@@ -17,7 +18,6 @@ const Ranking: React.FC = () => {
     axios
       .get('http://localhost:3001/menu')
       .then((response) => {
-        console.log(response.data);
         setMenus(response.data);
       })
       .catch((error) => {
@@ -29,30 +29,33 @@ const Ranking: React.FC = () => {
     navigate(`/menu/${id}`);
   };
 
+  const handleKeyPress = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    id: string,
+  ) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      handleItemClick(id);
+    }
+  };
+
   return (
-    <div>
+    <div className="ranking-container">
       <h1>Menu Ranking</h1>
       <div>
         {menus.map((menu) => (
           <div
             key={menu.id}
+            className="menu-item"
+            onClick={() => handleItemClick(menu.id)}
+            onKeyPress={(e) => handleKeyPress(e, menu.id)}
             role="button"
             tabIndex={0}
-            onClick={() => handleItemClick(menu.id)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                handleItemClick(menu.id);
-              }
-            }}
-            style={{ cursor: 'pointer', marginBottom: '20px' }}
           >
-            <img
-              src={menu.photoUrl}
-              alt={menu.name}
-              style={{ width: '100px', height: '100px' }}
-            />
-            <div>{menu.name}</div>
-            <div>{menu.reviewScore}</div>
+            <img src={menu.photoUrl} alt={menu.name} />
+            <div className="menu-details">
+              <div className="menu-name">{menu.name}</div>
+              <div className="review-score">{menu.reviewScore}</div>
+            </div>
           </div>
         ))}
       </div>
