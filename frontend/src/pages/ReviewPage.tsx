@@ -70,9 +70,9 @@ const ReviewPage: React.FC = () => {
     if (selectedMenu && reviewScore !== null) {
       try {
         await axios.post(`${process.env.REACT_APP_API_BASE_URL}/review`, {
-          menu_id: selectedMenu,
-          review_score: reviewScore,
-          review_comment: reviewComment,
+          menuId: selectedMenu,
+          reviewScore: reviewScore,
+          reviewComment: reviewComment,
         });
         setSubmitted(true);
         localStorage.setItem(
