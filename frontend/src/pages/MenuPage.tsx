@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/MenuPage.css';
 
@@ -17,6 +18,7 @@ interface DailyMenu {
 const MenuPage: React.FC = () => {
   const [dailyMenu, setDailyMenu] = useState<DailyMenu | null>(null);
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
+  const navigate = useNavigate();
 
   const fetchDailyMenu = async (date: string) => {
     try {
@@ -88,6 +90,10 @@ const MenuPage: React.FC = () => {
     };
   }, [currentDate]);
 
+  const handleItemClick = (id: string) => {
+    navigate(`/menu/${id}`);
+  };
+
   if (!dailyMenu) {
     return <div>Loading...</div>;
   }
@@ -103,7 +109,16 @@ const MenuPage: React.FC = () => {
       </div>
       <div className="menu-list">
         {dailyMenu.menus.map((menu) => (
-          <div key={menu.id} className="menu-item">
+          <div
+            key={menu.id}
+            className="menu-item"
+            onClick={() => handleItemClick(menu.id)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleItemClick(menu.id);
+            }}
+            role="button"
+            tabIndex={0}
+          >
             <img src={menu.photoUrl} alt={menu.name} className="menu-photo" />
             <div className="menu-details">
               <div className="menu-name">{menu.name}</div>
