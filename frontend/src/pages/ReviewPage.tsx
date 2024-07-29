@@ -13,10 +13,9 @@ const ReviewPage: React.FC = () => {
   const [dailyMenu, setDailyMenu] = useState<Menu[]>([]);
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [selectedMenu, setSelectedMenu] = useState<string | null>(null);
-  const [reviewScore, setReviewScore] = useState<number | null>(null);
+  const [reviewScore, setReviewScore] = useState<number>(3.0);
   const [reviewComment, setReviewComment] = useState<string>('');
   const [submitted, setSubmitted] = useState<boolean>(false);
-  const [sliderValue, setSliderValue] = useState<number>(3.0);
 
   const fetchDailyMenu = async (date: string) => {
     try {
@@ -57,18 +56,14 @@ const ReviewPage: React.FC = () => {
     setSelectedMenu(event.target.value);
   };
 
-  const handleScoreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setReviewScore(Number(event.target.value));
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setReviewScore(parseFloat(event.target.value));
   };
 
   const handleCommentChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
     setReviewComment(event.target.value);
-  };
-
-  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSliderValue(parseFloat(event.target.value));
   };
 
   const handleSubmit = async () => {
@@ -135,11 +130,11 @@ const ReviewPage: React.FC = () => {
             min="1.0"
             max="5.0"
             step="0.1"
-            value={sliderValue}
+            value={reviewScore}
             onChange={handleSliderChange}
             className="slider"
           />
-          <span className="slider-value">{sliderValue}</span>
+          <span className="slider-value">{reviewScore}</span> {}
         </div>
 
         <textarea

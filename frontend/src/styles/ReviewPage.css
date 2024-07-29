@@ -1,71 +1,71 @@
 .menu-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .menu-page-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .menu-page-header button {
-    margin: 0 10px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 1.5em;
-  }
-  
-  .review-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 95%;
-    max-width: 600px;
-  }
-  
-  .review-form select,
-  .review-form input,
-  .review-form textarea,
-  .review-form button {
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-  }
-  
-  .review-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .slider-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 600px; /* スライダーの幅を増やす */
-  }
-  
-  .slider {
-    flex-grow: 1;
-  }
-  
-  .slider-value {
-    margin-left: 10px;
-    font-size: 1.5em;
-  }
-  
-  .review-form textarea {
-    height: 100px;
-    resize: none;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .button-disabled {
-    color: grey;
-    cursor: not-allowed;
-  }
+.menu-page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.menu-page-header button {
+  margin: 0 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  max-width: 600px;
+}
+
+.review-form select,
+.review-form input,
+.review-form textarea,
+.review-form button {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.slider {
+  flex-grow: 1;
+}
+
+.slider-value {
+  margin-left: 10px;
+  font-size: 1.5em;
+}
+
+.review-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.button-disabled {
+  color: grey;
+  cursor: not-allowed;
+}
