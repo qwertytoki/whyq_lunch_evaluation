@@ -50,6 +50,18 @@ const MenuPage: React.FC = () => {
     setCurrentDate(newDate);
   };
 
+  const handlePreviousWeek = () => {
+    const newDate = new Date(currentDate);
+    newDate.setDate(newDate.getDate() - 7);
+    setCurrentDate(newDate);
+  };
+
+  const handleNextWeek = () => {
+    const newDate = new Date(currentDate);
+    newDate.setDate(newDate.getDate() + 7);
+    setCurrentDate(newDate);
+  };
+
   const getDayString = (date: Date) => {
     const options = {
       weekday: 'long',
@@ -67,9 +79,11 @@ const MenuPage: React.FC = () => {
   return (
     <div className="menu-page-container">
       <div className="menu-page-header">
+        <button onClick={handlePreviousWeek}>≪</button>
         <button onClick={handlePreviousDay}>←</button>
         <div>{getDayString(currentDate)}</div>
         <button onClick={handleNextDay}>→</button>
+        <button onClick={handleNextWeek}>≫</button>
       </div>
       <div className="menu-list">
         {dailyMenu.menus.map((menu) => (
