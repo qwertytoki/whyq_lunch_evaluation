@@ -14,7 +14,7 @@ export class MenuDataAccess {
         const snapshot = await firestore.collection('menuItems').get();
         const menuItems = snapshot.docs.map((doc) => {
             const data = doc.data();
-            return new Menu(data.name, data.review_score, data.photo_url);
+            return new Menu(data.menu_name, data.review_score, data.photo_url);
         });
         return menuItems;
     }
@@ -31,7 +31,7 @@ export class MenuDataAccess {
         if (!data) {
             return null;
         }
-        return new Menu(data.name, data.review_score, data.photo_url);
+        return new Menu(data.menu_name, data.review_score, data.photo_url);
     }
 
     async getMenuItemsByIds(ids: string[]): Promise<Menu[]> {

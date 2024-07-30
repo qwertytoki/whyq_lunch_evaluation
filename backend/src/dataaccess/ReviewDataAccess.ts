@@ -28,7 +28,7 @@ export class ReviewDataAccess {
     }
     async postReview(review: Review): Promise<void> {
         await firestore.collection('reviews').add({
-            menu_id: review.menuId,
+            menu_name: review.menuName,
             review_comment: review.reviewComment,
             review_score: review.reviewScore,
             date: new Date(),
