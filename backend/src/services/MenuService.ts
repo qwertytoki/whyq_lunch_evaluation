@@ -12,9 +12,9 @@ export class MenuService {
         return await menuDataAccess.getMenuItems();
     }
 
-    async getMenuDetails(id: string): Promise<MenuDetail | undefined> {
-        const menu = await menuDataAccess.getMenuItemsById(id);
-        const reviews = await reviewDataAccess.getReviewByMenuId(id);
+    async getMenuDetails(menuName: string): Promise<MenuDetail | undefined> {
+        const menu = await menuDataAccess.getMenuItemsByName(menuName);
+        const reviews = await reviewDataAccess.getReviewByMenuName(menuName);
         const reviewComments = reviews.map((review) => review.reviewComment);
         const listed_history = reviews.map((review) => review.date);
         if (menu) {

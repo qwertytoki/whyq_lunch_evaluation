@@ -19,15 +19,15 @@ export class MenuDataAccess {
         return menuItems;
     }
 
-    async getMenuItemsById(id: string): Promise<Menu | null> {
+    async getMenuItemsByName(menuName: string): Promise<Menu | null> {
         const snapshot = await firestore
             .collection('menuItems')
-            .doc(id.toString())
+            .where('menu_name', '==', menuName)
             .get();
-        if (!snapshot.exists) {
+        if (snapshot.docs.length === 0) {
             return null;
         }
-        const data = snapshot.data();
+        const data = snapshot.docs[0].data();
         if (!data) {
             return null;
         }

@@ -9,10 +9,10 @@ const firestore = new Firestore({
 });
 
 export class ReviewDataAccess {
-    async getReviewByMenuId(menuId: string): Promise<Review[]> {
+    async getReviewByMenuName(menuName: string): Promise<Review[]> {
         const snapshot = await firestore
             .collection('reviews')
-            .where('menu_id', '==', menuId)
+            .where('menu_name', '==', menuName)
             .get();
         const reviews = snapshot.docs.map((doc) => {
             const data = doc.data();

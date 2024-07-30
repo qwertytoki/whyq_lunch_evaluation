@@ -8,7 +8,7 @@ import {
 const router = Router();
 
 router.get('/menu/daily', getDailyLunchMenus);
-router.get('/menu/:id', getMenuDetails);
+router.get('/menu/detail', getMenuDetails);
 router.get('/menu', getMenuItems);
 
 export default router;
