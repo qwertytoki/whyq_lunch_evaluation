@@ -12,7 +12,7 @@ import uuid
 load_dotenv(dotenv_path="./batch/.env")
 
 
-def driverGenerate():
+def driver_generate():
     chrome_options = Options()
     # chrome_options.add_argument("--headless")
     chrome_options.add_argument("--start-maximized")
@@ -39,7 +39,7 @@ def login(driver):
     sleep(1)
 
 
-def getMenus(driver):
+def get_menus(driver):
     sleep(1)  # Wait for the page to load
     menu_list = []
 
@@ -72,30 +72,27 @@ def getMenus(driver):
 
 
 def initialize_firestore():
-    # Firestore接続用のJSONファイルのパスを環境変数から取得
+    # Get the path of the Firestore connection JSON file from environment variables
     key_path = os.getenv("FIRESTORE_KEY_PATH")
 
     if not key_path:
         raise ValueError("FIRESTORE_KEY_PATH environment variable is not set")
 
-    # サービスアカウントキーを使ってクライアントを初期化
+    # Initialize the client using the service account key
     credentials = service_account.Credentials.from_service_account_file(key_path)
     client = firestore.Client(credentials=credentials)
     return client
 
 
-def postDailyLunchMenus(menu_list):
-    # Firestoreクライアントの初期化
-    client = initialize_firestore()
-
+def post_daily_lunch_menus(menu_list, client):
     for menu in menu_list:
-        # コレクション名
+        # Collection name
         collection_name = "dailyLunchMenus"
 
-        # 任意のドキュメントIDを生成
+        # Generate a random document ID
         doc_id = str(uuid.uuid4())
 
-        # Firestoreにデータを追加
+        # Add data to Firestore
         client.collection(collection_name).document(doc_id).set(
             {
                 "photo_url": menu["photo_url"],
@@ -105,10 +102,39 @@ def postDailyLunchMenus(menu_list):
         )
 
 
+def post_menu_items(menu_list, client):
+    for menu in menu_list:
+        # Collection name
+        collection_name = "menuItems"
+
+        # Query to check if the same menu_name already exists
+        query = (
+            client.collection(collection_name)
+            .where("menu_name", "==", menu["menu_name"])
+            .get()
+        )
+
+        # Create a new document only if the same menu_name does not exist
+        if not query:
+            # Generate a random document ID
+            doc_id = str(uuid.uuid4())
+
+            # Add data to Firestore
+            client.collection(collection_name).document(doc_id).set(
+                {
+                    "menu_name": menu["menu_name"],
+                    "photo_url": menu["photo_url"],
+                    "review_score": 3.0,
+                }
+            )
+
+
 if __name__ == "__main__":
     print("test")
-    driver = driverGenerate()
+    driver = driver_generate()
     login(driver)
-    menu_list = getMenus(driver)
-    postDailyLunchMenus(menu_list)
+    menu_list = get_menus(driver)
+    client = initialize_firestore()
+    post_daily_lunch_menus(menu_list, client)
+    post_menu_items(menu_list, client)
     driver.quit()
