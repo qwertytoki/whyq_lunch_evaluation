@@ -21,7 +21,6 @@ export class MenuService {
             return new MenuDetail(
                 menu.id,
                 menu.name,
-                menu.storeName,
                 menu.reviewScore,
                 menu.photoUrl,
                 reviewComments,

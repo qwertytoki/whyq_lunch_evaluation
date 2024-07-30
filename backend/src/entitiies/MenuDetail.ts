@@ -1,7 +1,6 @@
 export class MenuDetail {
     id: string;
     name: string;
-    storeName: string;
     reviewScore: number;
     photoUrl: string;
     reviewComments: string[];
@@ -10,7 +9,6 @@ export class MenuDetail {
     constructor(
         id: string,
         name: string,
-        storeName: string,
         reviewScore: number,
         photoUrl: string,
         reviewComments: string[],
@@ -18,7 +16,6 @@ export class MenuDetail {
     ) {
         this.id = id;
         this.name = name;
-        this.storeName = storeName;
         this.reviewScore = reviewScore;
         this.photoUrl = photoUrl;
         this.reviewComments = reviewComments;

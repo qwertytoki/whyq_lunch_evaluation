@@ -17,7 +17,6 @@ export class MenuDataAccess {
             return new Menu(
                 doc.id,
                 data.name,
-                data.store_name,
                 data.review_score,
                 data.photo_url,
             );
@@ -40,7 +39,6 @@ export class MenuDataAccess {
         return new Menu(
             snapshot.id,
             data.name,
-            data.store_name,
             data.review_score,
             data.photo_url,
         );
@@ -62,7 +60,6 @@ export class MenuDataAccess {
                 return new Menu(
                     snapshot.id,
                     data.name,
-                    data.store_name,
                     data.review_score,
                     data.photo_url,
                 );
