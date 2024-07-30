@@ -19,7 +19,6 @@ export class MenuService {
         const listed_history = reviews.map((review) => review.date);
         if (menu) {
             return new MenuDetail(
-                menu.id,
                 menu.name,
                 menu.reviewScore,
                 menu.photoUrl,

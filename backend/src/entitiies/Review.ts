@@ -1,19 +1,19 @@
 export class Review {
     id: string;
-    menuId: string;
+    menuName: string;
     reviewComment: string;
     reviewScore: number;
     date: Date;
 
     constructor(
         id: string,
-        menuId: string,
+        menuName: string,
         reviewComment: string,
         reviewScore: number,
         date: Date,
     ) {
         this.id = id;
-        this.menuId = menuId;
+        this.menuName = menuName;
         this.reviewComment = reviewComment;
         this.reviewScore = reviewScore;
         this.date = date;
