@@ -33,11 +33,42 @@ def login(driver):
     user_password.send_keys(password)
     login_button = driver.find_element_by_id("loginBtn")
     login_button.click()
-    sleep(10)
+    sleep(1)
+
+
+def getMenus(driver):
+    sleep(1)  # Wait for the page to load
+    menu_list = []
+
+    # Find all meal lists
+    meal_lists = driver.find_elements_by_css_selector(".rakuten_meal_list")
+
+    for meal_list in meal_lists:
+        date_string = meal_list.get_attribute("data-date")
+
+        # Find all menu items within the meal list
+        menu_items = meal_list.find_elements_by_css_selector("ul")
+
+        for menu_item in menu_items:
+            photo_url = menu_item.find_element_by_css_selector(
+                "img.meal_img"
+            ).get_attribute("src")
+            menu_name = menu_item.find_element_by_css_selector("h6 a").text
+
+            menu_list.append(
+                {
+                    "photo_url": photo_url,
+                    "menu_name": menu_name,
+                    "date_string": date_string,
+                }
+            )
+
+    return menu_list
 
 
 if __name__ == "__main__":
     print("test")
     driver = driverGenerate()
     login(driver)
+    menu_list = getMenus(driver)
     driver.quit()
