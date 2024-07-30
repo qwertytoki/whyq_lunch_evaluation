@@ -1,10 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from google.cloud import firestore
+from google.oauth2 import service_account
 from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from dotenv import load_dotenv
 import os
+import uuid
 
 load_dotenv(dotenv_path="./batch/.env")
 
@@ -81,7 +84,7 @@ def initialize_firestore():
     return client
 
 
-def postDailyLunchMenu(menu_list):
+def postDailyLunchMenus(menu_list):
     # Firestoreクライアントの初期化
     client = initialize_firestore()
 
@@ -89,12 +92,16 @@ def postDailyLunchMenu(menu_list):
         # コレクション名
         collection_name = "dailyLunchMenus"
 
-        # ドキュメントIDをmenu_nameから生成
-        doc_id = menu["menu_name"]
+        # 任意のドキュメントIDを生成
+        doc_id = str(uuid.uuid4())
 
         # Firestoreにデータを追加
         client.collection(collection_name).document(doc_id).set(
-            {"photo_url": menu["photo_url"], "date_string": menu["date_string"]}
+            {
+                "photo_url": menu["photo_url"],
+                "menu_name": menu["menu_name"],
+                "date_string": menu["date_string"],
+            }
         )
 
 
@@ -103,5 +110,5 @@ if __name__ == "__main__":
     driver = driverGenerate()
     login(driver)
     menu_list = getMenus(driver)
-    postDailyLunchMenu(menu_list)
+    postDailyLunchMenus(menu_list)
     driver.quit()
