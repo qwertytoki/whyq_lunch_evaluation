@@ -24,7 +24,7 @@ evaluate weekly lunch to improve our lunch choice.
 
 BackEnd: Node.js + TypeScript, Express framework  
 FrontEnd: React.js  
-Database: Cloud firestore
-Hosting: OVH Cloud VPS 
+Database: Cloud firestore  
+Hosting: OVH Cloud VPS  
 Batch: Selenium + Python  
 
