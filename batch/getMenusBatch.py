@@ -53,7 +53,9 @@ def getMenus(driver):
             photo_url = menu_item.find_element_by_css_selector(
                 "img.meal_img"
             ).get_attribute("src")
-            menu_name = menu_item.find_element_by_css_selector("h6 a").text
+            menu_name = menu_item.find_element_by_css_selector("h6").get_attribute(
+                "title"
+            )
 
             menu_list.append(
                 {
@@ -66,9 +68,40 @@ def getMenus(driver):
     return menu_list
 
 
+def initialize_firestore():
+    # Firestore接続用のJSONファイルのパスを環境変数から取得
+    key_path = os.getenv("FIRESTORE_KEY_PATH")
+
+    if not key_path:
+        raise ValueError("FIRESTORE_KEY_PATH environment variable is not set")
+
+    # サービスアカウントキーを使ってクライアントを初期化
+    credentials = service_account.Credentials.from_service_account_file(key_path)
+    client = firestore.Client(credentials=credentials)
+    return client
+
+
+def postDailyLunchMenu(menu_list):
+    # Firestoreクライアントの初期化
+    client = initialize_firestore()
+
+    for menu in menu_list:
+        # コレクション名
+        collection_name = "dailyLunchMenus"
+
+        # ドキュメントIDをmenu_nameから生成
+        doc_id = menu["menu_name"]
+
+        # Firestoreにデータを追加
+        client.collection(collection_name).document(doc_id).set(
+            {"photo_url": menu["photo_url"], "date_string": menu["date_string"]}
+        )
+
+
 if __name__ == "__main__":
     print("test")
     driver = driverGenerate()
     login(driver)
     menu_list = getMenus(driver)
+    postDailyLunchMenu(menu_list)
     driver.quit()
