@@ -3,6 +3,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path="./batch/.env")
 
 
 def driverGenerate():
@@ -17,16 +21,19 @@ def driverGenerate():
 
 def login(driver):
     driver.get("https://www.whyq.sg/")
-    sleep(5)
-    print("test")
-    # iframe = driver.find_element_by_css_selector("iframe")
-    # driver.switch_to.frame(iframe)
-    # user_email = driver.find_element_by_name("user[email]")
-    # user_email.send_keys(my_email)
-    # password = driver.find_element_by_name("user[password]")
-    # password.send_keys(my_pass)
-    # login_button = driver.find_element_by_name("commit")
-    # login_button.click()
+    sleep(2)
+    login_button = driver.find_element_by_class_name("login")
+    login_button.click()
+    sleep(1)
+    email = os.getenv("EMAIL")
+    password = os.getenv("PASSWORD")
+    user_email = driver.find_element_by_name("loginUser")
+    user_email.send_keys(email)
+    user_password = driver.find_element_by_name("loginPass")
+    user_password.send_keys(password)
+    login_button = driver.find_element_by_id("loginBtn")
+    login_button.click()
+    sleep(10)
 
 
 if __name__ == "__main__":
