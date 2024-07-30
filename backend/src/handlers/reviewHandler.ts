@@ -5,8 +5,8 @@ const reviewService = new ReviewService();
 import { Request, Response } from 'express';
 
 export const getReviewByMenuName = async (req: Request, res: Response) => {
-    const menuId = req.params.menuId;
-    const reviews = await reviewService.getReviewByMenuName(menuId);
+    const menuName = req.query.name as string;
+    const reviews = await reviewService.getReviewByMenuName(menuName);
     res.json(reviews);
 };
 
