@@ -34,20 +34,28 @@ export class MenuDataAccess {
         return new Menu(data.menu_name, data.review_score, data.photo_url);
     }
 
-    async getMenuItemsByIds(ids: string[]): Promise<Menu[]> {
-        const promises = ids.map((id) =>
-            firestore.collection('menuItems').doc(id).get(),
+    async getMenuItemsByNames(names: string[]): Promise<Menu[]> {
+        const promises = names.map((name) =>
+            firestore
+                .collection('menuItems')
+                .where('menu_name', '==', name)
+                .get(),
         );
         const snapshots = await Promise.all(promises);
 
         const menus = snapshots
-            .filter((snapshot) => snapshot.exists)
+            .filter((snapshot) => !snapshot.empty)
             .map((snapshot) => {
-                const data = snapshot.data();
+                const doc = snapshot.docs[0];
+                const data = doc.data();
                 if (!data) {
                     throw new Error('Data not found');
                 }
-                return new Menu(data.name, data.review_score, data.photo_url);
+                return new Menu(
+                    data.menu_name,
+                    data.review_score,
+                    data.photo_url,
+                );
             });
         return menus;
     }
@@ -60,8 +68,8 @@ export class MenuDataAccess {
         if (snapshot.empty) {
             return new DailyLunchMenus(dateString, []);
         }
-        const menuIds = snapshot.docs.map((doc) => doc.data().menu_name);
-        const menus = await this.getMenuItemsByIds(menuIds);
+        const menuNames = snapshot.docs.map((doc) => doc.data().menu_name);
+        const menus = await this.getMenuItemsByNames(menuNames);
         return new DailyLunchMenus(dateString, menus);
     }
 }
