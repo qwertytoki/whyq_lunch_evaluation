@@ -6,7 +6,6 @@ import '../styles/MenuPage.css';
 import Header from '../components/Header';
 
 interface Menu {
-  id: string;
   name: string;
   reviewScore: number;
   photoUrl: string;
@@ -91,8 +90,9 @@ const MenuPage: React.FC = () => {
     };
   }, [currentDate]);
 
-  const handleItemClick = (id: string) => {
-    navigate(`/menu/${id}`);
+  const handleItemClick = (menuName: string) => {
+    const encodedMenuName = encodeURIComponent(menuName);
+    navigate(`/menu/detail?name=${encodedMenuName}`);
   };
 
   if (!dailyMenu) {
@@ -112,11 +112,11 @@ const MenuPage: React.FC = () => {
       <div className="menu-list">
         {dailyMenu.menus.map((menu) => (
           <div
-            key={menu.id}
+            key={menu.name}
             className="menu-item"
-            onClick={() => handleItemClick(menu.id)}
+            onClick={() => handleItemClick(menu.name)}
             onKeyDown={(e) => {
-              if (e.key === 'Enter') handleItemClick(menu.id);
+              if (e.key === 'Enter') handleItemClick(menu.name);
             }}
             role="button"
             tabIndex={0}
