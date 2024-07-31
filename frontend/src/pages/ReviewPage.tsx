@@ -6,7 +6,6 @@ import SubmitMessage from '../components/SubmitMessage';
 import Header from '../components/Header';
 
 interface Menu {
-  id: string;
   name: string;
   reviewScore: number;
   photoUrl: string;
@@ -83,7 +82,7 @@ const ReviewPage: React.FC = () => {
     if (selectedMenu && reviewScore !== null) {
       try {
         await axios.post(`${process.env.REACT_APP_API_BASE_URL}/review`, {
-          menuId: selectedMenu,
+          menuName: selectedMenu,
           reviewScore: reviewScore,
           reviewComment: reviewComment,
         });
@@ -144,7 +143,7 @@ const ReviewPage: React.FC = () => {
         >
           <option value="">Select a menu</option>
           {dailyMenu.map((menu) => (
-            <option key={menu.id} value={menu.id}>
+            <option key={menu.name} value={menu.name}>
               {menu.name}
             </option>
           ))}
