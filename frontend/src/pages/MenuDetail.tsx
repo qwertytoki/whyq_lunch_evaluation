@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/MenuDetail.css';
 
 interface MenuDetail {
-  id: string;
   name: string;
   reviewScore: number;
   photoUrl: string;
@@ -15,19 +14,27 @@ interface MenuDetail {
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const MenuDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const location = useLocation();
   const [menuDetail, setMenuDetail] = useState<MenuDetail | null>(null);
 
+  // Get the menuName from the query parameters
+  const queryParams = new URLSearchParams(location.search);
+  const menuName = queryParams.get('name');
+
   useEffect(() => {
-    axios
-      .get(`${apiBaseUrl}/menu/${id}`)
-      .then((response) => {
-        setMenuDetail(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching menu details:', error);
-      });
-  }, [id]);
+    if (menuName) {
+      axios
+        .get(`${apiBaseUrl}/menu/detail`, {
+          params: { name: menuName },
+        })
+        .then((response) => {
+          setMenuDetail(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching menu details:', error);
+        });
+    }
+  }, [menuName]);
 
   if (!menuDetail) {
     return <div>Loading...</div>;
