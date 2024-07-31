@@ -6,7 +6,6 @@ import '../styles/Ranking.css';
 import Header from '../components/Header';
 
 interface Menu {
-  id: string;
   name: string;
   reviewScore: number;
   photoUrl: string;
@@ -28,16 +27,17 @@ const Ranking: React.FC = () => {
       });
   }, []);
 
-  const handleItemClick = (id: string) => {
-    navigate(`/menu/${id}`);
+  const handleItemClick = (menuName: string) => {
+    const encodedMenuName = encodeURIComponent(menuName);
+    navigate(`/menu/detail?name=${encodedMenuName}`);
   };
 
   const handleKeyPress = (
     e: React.KeyboardEvent<HTMLDivElement>,
-    id: string,
+    menuName: string,
   ) => {
     if (e.key === 'Enter' || e.key === ' ') {
-      handleItemClick(id);
+      handleItemClick(menuName);
     }
   };
 
@@ -48,10 +48,10 @@ const Ranking: React.FC = () => {
       <div>
         {menus.map((menu) => (
           <div
-            key={menu.id}
+            key={menu.name}
             className="menu-item"
-            onClick={() => handleItemClick(menu.id)}
-            onKeyPress={(e) => handleKeyPress(e, menu.id)}
+            onClick={() => handleItemClick(menu.name)}
+            onKeyDown={(e) => handleKeyPress(e, menu.name)}
             role="button"
             tabIndex={0}
           >
