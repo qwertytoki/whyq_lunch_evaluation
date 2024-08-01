@@ -1,10 +1,10 @@
-.menu-page-container {
+.menuPageContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.menu-page-header {
+.menuPageHeader {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
   margin-bottom: 20px;
 }
 
-.menu-page-header button {
+.menuPageHeader button {
   margin: 0 10px;
   cursor: pointer;
   background: none;
@@ -20,7 +20,13 @@
   font-size: 1.5em;
 }
 
-.review-form {
+.menuPageHeader div {
+  margin: 0 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.reviewForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,23 +34,17 @@
   max-width: 600px;
 }
 
-.review-form select,
-.review-form input,
-.review-form textarea,
-.review-form button {
+.reviewForm select,
+.reviewForm input,
+.reviewForm textarea,
+.reviewForm button {
   margin-bottom: 10px;
   width: 100%;
   padding: 10px;
   font-size: 1em;
 }
 
-.review-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.slider-container {
+.sliderContainer {
   display: flex;
   align-items: center;
   width: 100%;
@@ -55,17 +55,17 @@
   flex-grow: 1;
 }
 
-.slider-value {
+.sliderValue {
   margin-left: 10px;
   font-size: 1.5em;
 }
 
-.review-form textarea {
+.reviewForm textarea {
   height: 100px;
   resize: none;
 }
 
-.button-disabled {
+.buttonDisabled {
   color: grey;
   cursor: not-allowed;
 }
