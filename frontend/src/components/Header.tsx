@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Header.css';
+
+import styles from '../styles/Header.module.css';
 
 const Header: React.FC = () => {
   return (
-    <header className="header">
-      <Link to="/" className="back-to-home">
+    <header className={styles.header}>
+      <Link to="/" className={styles.backToHome}>
         ← Back To Home
       </Link>
     </header>

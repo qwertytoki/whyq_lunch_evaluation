@@ -1,13 +1,13 @@
-// src/components/SubmitMessage.tsx
 import React from 'react';
-import '../styles/SubmitMessage.css';
+
+import styles from '../styles/SubmitMessage.module.css';
 
 interface SubmitMessageProps {
   message: string;
 }
 
 const SubmitMessage: React.FC<SubmitMessageProps> = ({ message }) => {
-  return <div className="submit-message">{message}</div>;
+  return <div className={styles.submitMessage}>{message}</div>;
 };
 
 export default SubmitMessage;
