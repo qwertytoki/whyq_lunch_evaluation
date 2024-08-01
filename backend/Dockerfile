@@ -1,20 +1,20 @@
-# Base image
+# Use the official Node.js image as the base image
 FROM node:18.3.0
 
-# Set working directory
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Copy dependency definitions
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy application source code
+# Copy the rest of the application code
 COPY . .
 
 # Build TypeScript files
 RUN npm run build
 
 # Start the application
-CMD [ "node", "dist/app.js" ]
+CMD ["node", "dist/app.js"]
