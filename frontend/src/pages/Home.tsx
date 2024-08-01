@@ -16,7 +16,7 @@ const Home: React.FC = () => {
           </li>
           <li className={styles.navItem}>
             <Link to="/menu" className={styles.navLink}>
-              Menu Page
+              Daily Menu List
             </Link>
           </li>
           <li className={styles.navItem}>
