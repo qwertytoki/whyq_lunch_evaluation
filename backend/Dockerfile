@@ -22,6 +22,8 @@ COPY .env .env
 # Build TypeScript files
 RUN npm run build
 
+EXPOSE 3001
+
 # Set environment variables
 ENV GOOGLE_APPLICATION_CREDENTIALS=config/whyq-lunch-evaluation-777f06764b4e.json
 ENV GOOGLE_CLOUD_PROJECT=whyq-lunch-evaluation
