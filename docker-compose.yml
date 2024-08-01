@@ -4,11 +4,7 @@ services:
     build: ./backend
     ports:
       - '3001:3000'
-    volumes:
-      - .:/usr/src/app
   frontend:
     build: ./frontend
     ports:
       - '3000:80'
-    volumes:
-      - .:/usr/src/app
