@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import '../styles/MenuPage.css';
+import styles from '../styles/MenuPage.module.css'; // 変更点
 import Header from '../components/Header';
 
 interface Menu {
@@ -100,20 +100,20 @@ const MenuPage: React.FC = () => {
   }
 
   return (
-    <div className="menu-page-container">
+    <div className={styles.menuPageContainer}>
       <Header />
-      <div className="menu-page-header">
+      <div className={styles.menuPageHeader}>
         <button onClick={handlePreviousWeek}>≪</button>
         <button onClick={handlePreviousDay}>←</button>
         <div>{getDayString(currentDate)}</div>
         <button onClick={handleNextDay}>→</button>
         <button onClick={handleNextWeek}>≫</button>
       </div>
-      <div className="menu-list">
+      <div className={styles.menuList}>
         {dailyMenu.menus.map((menu) => (
           <div
             key={menu.name}
-            className="menu-item"
+            className={styles.menuItem}
             onClick={() => handleItemClick(menu.name)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') handleItemClick(menu.name);
@@ -121,10 +121,14 @@ const MenuPage: React.FC = () => {
             role="button"
             tabIndex={0}
           >
-            <img src={menu.photoUrl} alt={menu.name} className="menu-photo" />
-            <div className="menu-details">
-              <div className="menu-name">{menu.name}</div>
-              <div className="menu-score">{menu.reviewScore}</div>
+            <img
+              src={menu.photoUrl}
+              alt={menu.name}
+              className={styles.menuPhoto}
+            />
+            <div className={styles.menuDetails}>
+              <div className={styles.menuName}>{menu.name}</div>
+              <div className={styles.menuScore}>{menu.reviewScore}</div>
             </div>
           </div>
         ))}
