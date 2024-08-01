@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/MenuDetail.css';
+
+import styles from '../styles/MenuDetail.module.css';
 
 interface MenuDetail {
   name: string;
@@ -41,32 +42,32 @@ const MenuDetail: React.FC = () => {
   }
 
   return (
-    <div className="menu-detail-container">
-      <div className="menu-header">
-        <h1 className="menu-name">{menuDetail.name}</h1>
-        <div className="review-score">
+    <div className={styles.menuDetailContainer}>
+      <div className={styles.menuHeader}>
+        <h1 className={styles.menuName}>{menuDetail.name}</h1>
+        <div className={styles.reviewScore}>
           Review score: {menuDetail.reviewScore}
         </div>
       </div>
-      <div className="menu-content">
+      <div className={styles.menuContent}>
         <img
           src={menuDetail.photoUrl}
           alt={menuDetail.name}
-          className="menu-photo"
+          className={styles.menuPhoto}
         />
-        <div className="menu-info">
-          <div className="review-comments">
+        <div className={styles.menuInfo}>
+          <div className={styles.reviewComments}>
             <h2>Review Comments</h2>
             {menuDetail.reviewComments.map((comment, index) => (
-              <div key={index} className="review-comment">
+              <div key={index} className={styles.reviewComment}>
                 {comment}
               </div>
             ))}
           </div>
-          <div className="listed-history">
+          <div className={styles.listedHistory}>
             <h2>Listed Dates</h2>
             {menuDetail.listed_history.map((date, index) => (
-              <div key={index} className="listed-date">
+              <div key={index} className={styles.listedDate}>
                 {new Date(date).toLocaleDateString()}
               </div>
             ))}

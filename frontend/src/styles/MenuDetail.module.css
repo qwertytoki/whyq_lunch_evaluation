@@ -1,4 +1,4 @@
-.menu-detail-container {
+.menuDetailContainer {
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
@@ -6,7 +6,7 @@
   background-color: #fff;
 }
 
-.menu-header {
+.menuHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,94 +15,93 @@
   margin-bottom: 20px;
 }
 
-.menu-name {
+.menuName {
   font-size: 2em;
   font-weight: bold;
 }
 
-.review-score {
+.reviewScore {
   font-size: 1.5em;
   font-weight: bold;
   display: flex;
   align-items: center;
 }
 
-.menu-content {
+.menuContent {
   display: flex;
 }
 
-.menu-photo {
+.menuPhoto {
   width: 200px;
   height: 200px;
   margin-right: 20px;
 }
 
-.menu-info {
+.menuInfo {
   flex-grow: 1;
 }
 
-.review-comments,
-.listed-history {
+.reviewComments,
+.listedHistory {
   margin-top: 20px;
 }
 
-.review-comment,
-.listed-date {
+.reviewComment,
+.listedDate {
   padding: 10px;
   margin-bottom: 10px;
   background-color: #f9f9f9;
   border-radius: 5px;
 }
 
-.review-comments h2,
-.listed-history h2 {
+.reviewComments h2,
+.listedHistory h2 {
   margin-bottom: 10px;
   font-size: 1.5em;
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
 }
 
-.review-comment {
+.reviewComment {
   border: 1px solid #ddd;
 }
 
-.listed-date {
+.listedDate {
   border: 1px solid #ddd;
 }
 
-/* モバイル表示に対応するためのメディアクエリ */
 @media (max-width: 768px) {
-  .menu-detail-container {
+  .menuDetailContainer {
     width: 90%;
     padding: 10px;
   }
 
-  .menu-header {
+  .menuHeader {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .review-score {
+  .reviewScore {
     margin-top: 10px;
   }
 
-  .menu-content {
+  .menuContent {
     flex-direction: column;
     align-items: center;
   }
 
-  .menu-photo {
+  .menuPhoto {
     width: 100%;
     height: auto;
     margin-bottom: 20px;
   }
 
-  .menu-info {
+  .menuInfo {
     width: 100%;
   }
 
-  .review-comment,
-  .listed-date {
+  .reviewComment,
+  .listedDate {
     width: 100%;
   }
 }
