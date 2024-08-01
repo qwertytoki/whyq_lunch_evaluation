@@ -1,10 +1,10 @@
-.ranking-container {
+.rankingContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.menu-item {
+.menuItem {
   display: flex;
   align-items: center;
   width: 95%;
@@ -19,42 +19,42 @@
   background-color: #fff;
 }
 
-.menu-item img {
+.menuItem img {
   width: 8%;
   height: auto;
   margin-right: 20px;
 }
 
-.menu-details {
+.menuDetails {
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.menu-name,
-.review-score {
+.menuName,
+.reviewScore {
   font-weight: bold;
   font-size: 1.2em;
 }
 
 @media (max-width: 600px) {
-  .menu-item {
+  .menuItem {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .menu-item img {
+  .menuItem img {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .menu-details {
+  .menuDetails {
     align-items: center;
     text-align: center;
   }
 
-  .review-score {
+  .reviewScore {
     margin-top: 10px;
   }
 }

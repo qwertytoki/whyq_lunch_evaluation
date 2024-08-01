@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import '../styles/Ranking.css';
+import styles from '../styles/Ranking.module.css';
 import Header from '../components/Header';
 
 interface Menu {
@@ -42,23 +42,27 @@ const Ranking: React.FC = () => {
   };
 
   return (
-    <div className="ranking-container">
+    <div className={styles.rankingContainer}>
       <Header />
       <h1>Menu Ranking</h1>
       <div>
         {menus.map((menu) => (
           <div
             key={menu.name}
-            className="menu-item"
+            className={styles.menuItem}
             onClick={() => handleItemClick(menu.name)}
             onKeyDown={(e) => handleKeyPress(e, menu.name)}
             role="button"
             tabIndex={0}
           >
-            <img src={menu.photoUrl} alt={menu.name} />
-            <div className="menu-details">
-              <div className="menu-name">{menu.name}</div>
-              <div className="review-score">{menu.reviewScore}</div>
+            <img
+              src={menu.photoUrl}
+              alt={menu.name}
+              className={styles.menuPhoto}
+            />
+            <div className={styles.menuDetails}>
+              <div className={styles.menuName}>{menu.name}</div>
+              <div className={styles.reviewScore}>{menu.reviewScore}</div>
             </div>
           </div>
         ))}
