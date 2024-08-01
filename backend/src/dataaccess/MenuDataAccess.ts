@@ -16,7 +16,10 @@ export class MenuDataAccess {
             const data = doc.data();
             return new Menu(data.menu_name, data.review_score, data.photo_url);
         });
-        return menuItems;
+        const sortedMenuItems = menuItems.sort(
+            (a, b) => b.reviewScore - a.reviewScore,
+        );
+        return sortedMenuItems;
     }
 
     async getMenuItemsByName(menuName: string): Promise<Menu | null> {
@@ -70,7 +73,8 @@ export class MenuDataAccess {
         }
         const menuNames = snapshot.docs.map((doc) => doc.data().menu_name);
         const menus = await this.getMenuItemsByNames(menuNames);
-        return new DailyLunchMenus(dateString, menus);
+        const sortedMenus = menus.sort((a, b) => b.reviewScore - a.reviewScore);
+        return new DailyLunchMenus(dateString, sortedMenus);
     }
 
     async updateReviewScore(

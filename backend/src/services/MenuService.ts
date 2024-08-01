@@ -16,14 +16,13 @@ export class MenuService {
         const menu = await menuDataAccess.getMenuItemsByName(menuName);
         const reviews = await reviewDataAccess.getReviewByMenuName(menuName);
         const reviewComments = reviews.map((review) => review.reviewComment);
-        const listed_history = reviews.map((review) => review.date);
         if (menu) {
             return new MenuDetail(
                 menu.name,
                 menu.reviewScore,
                 menu.photoUrl,
                 reviewComments,
-                listed_history,
+                [],
             );
         }
     }
