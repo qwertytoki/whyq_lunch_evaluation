@@ -1,29 +1,29 @@
-.home-container {
+.homeContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
 }
 
-.home-container h1 {
+.homeContainer h1 {
   margin-bottom: 20px;
 }
 
-nav ul {
+.navList {
   list-style: none;
   padding: 0;
 }
 
-nav ul li {
+.navItem {
   margin: 10px 0;
 }
 
-nav ul li a {
+.navLink {
   text-decoration: none;
   color: blue;
   font-size: 1.2em;
 }
 
-nav ul li a:hover {
+.navLink:hover {
   text-decoration: underline;
 }
