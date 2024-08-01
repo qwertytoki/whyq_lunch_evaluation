@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import '../styles/ReviewPage.css';
+import styles from '../styles/ReviewPage.module.css';
 import SubmitMessage from '../components/SubmitMessage';
 import Header from '../components/Header';
 
@@ -118,16 +118,16 @@ const ReviewPage: React.FC = () => {
 
   const today = new Date();
   return (
-    <div className="menu-page-container">
+    <div className={styles.menuPageContainer}>
       <Header />
-      <div className="menu-page-header">
+      <div className={styles.menuPageHeader}>
         <button onClick={handlePreviousDay}>←</button>
         <div>{getDayString(currentDate)}</div>
         <button
           onClick={handleNextDay}
           className={
             currentDate.toDateString() === today.toDateString()
-              ? 'button-disabled'
+              ? styles.buttonDisabled
               : ''
           }
           disabled={currentDate.toDateString() === today.toDateString()}
@@ -135,7 +135,7 @@ const ReviewPage: React.FC = () => {
           →
         </button>
       </div>
-      <div className="review-form">
+      <div className={styles.reviewForm}>
         <select
           onChange={handleMenuChange}
           value={selectedMenu || ''}
@@ -148,7 +148,7 @@ const ReviewPage: React.FC = () => {
             </option>
           ))}
         </select>
-        <div className="slider-container">
+        <div className={styles.sliderContainer}>
           <input
             type="range"
             min="1.0"
@@ -156,9 +156,9 @@ const ReviewPage: React.FC = () => {
             step="0.1"
             value={reviewScore}
             onChange={handleSliderChange}
-            className="slider"
+            className={styles.slider}
           />
-          <span className="slider-value">{reviewScore.toFixed(1)}</span>
+          <span className={styles.sliderValue}>{reviewScore.toFixed(1)}</span>
         </div>
         <textarea
           placeholder="Write your review here"
