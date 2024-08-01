@@ -18,7 +18,7 @@ export class ReviewDataAccess {
             const data = doc.data();
             return new Review(
                 doc.id,
-                data.menu_id,
+                data.menu_name,
                 data.review_comment,
                 data.review_score,
                 data.date.toDate(),

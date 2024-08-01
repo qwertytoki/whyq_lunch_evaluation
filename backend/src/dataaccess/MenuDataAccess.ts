@@ -72,4 +72,19 @@ export class MenuDataAccess {
         const menus = await this.getMenuItemsByNames(menuNames);
         return new DailyLunchMenus(dateString, menus);
     }
+
+    async updateReviewScore(
+        menuName: string,
+        reviewScore: number,
+    ): Promise<void> {
+        const snapshot = await firestore
+            .collection('menuItems')
+            .where('menu_name', '==', menuName)
+            .get();
+
+        if (!snapshot.empty) {
+            const docRef = snapshot.docs[0].ref;
+            await docRef.update({ review_score: reviewScore });
+        }
+    }
 }
