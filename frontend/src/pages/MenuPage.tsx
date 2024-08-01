@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import styles from '../styles/MenuPage.module.css'; // 変更点
+import styles from '../styles/MenuPage.module.css';
 import Header from '../components/Header';
 
 interface Menu {

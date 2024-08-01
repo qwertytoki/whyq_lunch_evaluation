@@ -1,18 +1,18 @@
-.menu-page-container {
+.menuPageContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
 }
 
-.menu-page-header {
+.menuPageHeader {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.menu-page-header button {
+.menuPageHeader button {
   background-color: transparent;
   border: none;
   font-size: 1.5em;
@@ -20,13 +20,13 @@
   margin: 0 10px;
 }
 
-.menu-page-header div {
+.menuPageHeader div {
   margin: 0 20px;
   font-size: 1.5em;
   font-weight: bold;
 }
 
-.menu-list {
+.menuList {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@
   max-width: 800px;
 }
 
-.menu-item {
+.menuItem {
   display: flex;
   align-items: center;
   width: 100%;
@@ -44,31 +44,31 @@
   background-color: #fff;
 }
 
-.menu-photo {
+.menuPhoto {
   width: 20%;
   height: auto;
   margin-right: 20px;
 }
 
-.menu-details {
+.menuDetails {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 1;
 }
 
-.menu-name {
+.menuName {
   font-weight: bold;
   font-size: 1.2em;
 }
 
-.menu-score {
+.menuScore {
   font-size: 1em;
   color: #555;
 }
 
 @media (max-width: 600px) {
-  .menu-photo {
+  .menuPhoto {
     width: 30%;
   }
 }
