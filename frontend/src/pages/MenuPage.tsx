@@ -17,6 +17,7 @@ interface DailyMenu {
 }
 
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+console.log('API Base URL:', apiBaseUrl);
 
 const MenuPage: React.FC = () => {
   const [dailyMenu, setDailyMenu] = useState<DailyMenu | null>(null);
