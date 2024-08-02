@@ -14,7 +14,7 @@ app.get('/health', (req, res) => {
     res.send('Hello World!');
 });
 
-const port = process.env.PORT || 3001;
+const port = parseInt(process.env.PORT || '3001', 10);
 app.listen(port, '0.0.0.0', () => {
     console.log(`Server is running on port ${port}`);
 });
