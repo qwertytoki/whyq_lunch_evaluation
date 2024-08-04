@@ -76,28 +76,11 @@
 @media (max-width: 600px) {
   .menuPageHeader button {
     font-size: 1.2em;
-    margin: 0 5px;
-  }
-
-  .menuPageHeader div {
-    font-size: 1.2em;
-    margin: 0 5px;
+    margin: 0 2px;
   }
 
   .menuPhoto {
     width: 30%;
     margin-right: 10px;
-  }
-
-  .menuItem {
-    padding: 10px 5px;
-  }
-
-  .menuDetails {
-    align-items: flex-start;
-  }
-
-  .menuList {
-    padding: 0 10px;
   }
 }
