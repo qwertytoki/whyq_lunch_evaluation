@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .menuPageHeader {
@@ -32,6 +35,8 @@
   align-items: center;
   width: 95%;
   max-width: 600px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .reviewForm select,
@@ -42,6 +47,7 @@
   width: 100%;
   padding: 10px;
   font-size: 1em;
+  box-sizing: border-box;
 }
 
 .sliderContainer {
@@ -49,6 +55,8 @@
   align-items: center;
   width: 100%;
   max-width: 600px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .slider {
