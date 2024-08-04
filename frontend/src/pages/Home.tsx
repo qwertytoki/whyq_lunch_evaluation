@@ -11,7 +11,7 @@ const Home: React.FC = () => {
         <ul className={styles.navList}>
           <li className={styles.navItem}>
             <Link to="/review" className={styles.navLink}>
-              Review Page
+              Review the Lunch
             </Link>
           </li>
           <li className={styles.navItem}>
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
           </li>
           <li className={styles.navItem}>
             <Link to="/ranking" className={styles.navLink}>
-              Ranking Page
+              See the Ranking
             </Link>
           </li>
         </ul>
