@@ -1,6 +1,12 @@
 # whyq_lunch_evaluation
 
-evaluate weekly lunch to improve our lunch choice.
+evaluate weekly lunch to improve our lunch choice.  
+
+★★★★★ Definitely I will order again. If I see this menu, no need to see other menu.  
+★★★★☆ Good taste, I like it, if no any other choice, I can choose this.  
+★★★☆☆ Okay, if I have curiosity or feeling good, I will choose this.  
+★★☆☆☆ hmmm, if I am hungry, I can eat though..   
+★☆☆☆☆ Definitely I will NOT order again. It made my bad day.     
 
 ## Rough introductions
 
