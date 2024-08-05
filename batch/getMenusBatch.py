@@ -1,4 +1,7 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from google.cloud import firestore
@@ -9,7 +12,7 @@ from dotenv import load_dotenv
 import os
 import uuid
 
-load_dotenv(dotenv_path="./batch/.env")
+load_dotenv(dotenv_path=".env")
 
 
 def driver_generate():
@@ -25,14 +28,18 @@ def driver_generate():
 def login(driver):
     driver.get("https://www.whyq.sg/")
     sleep(2)
-    login_button = driver.find_element_by_class_name("login")
+    wait = WebDriverWait(driver, 10)
+    login_button = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "login")))
     login_button.click()
-    sleep(1)
+
     email = os.getenv("EMAIL")
     password = os.getenv("PASSWORD")
-    user_email = driver.find_element_by_name("loginUser")
+    if not email or not password:
+        print("Email or Password not set in environment variables.")
+        return
+    user_email = wait.until(EC.presence_of_element_located((By.NAME, "loginUser")))
     user_email.send_keys(email)
-    user_password = driver.find_element_by_name("loginPass")
+    user_password = wait.until(EC.presence_of_element_located((By.NAME, "loginPass")))
     user_password.send_keys(password)
     login_button = driver.find_element_by_id("loginBtn")
     login_button.click()
