@@ -2,10 +2,10 @@
 
 evaluate weekly lunch to improve our lunch choice.  
 
-★★★★★ Definitely I will order again. If I see this menu, no need to see other menu.  
-★★★★☆ Good taste, I like it, if no any other choice, I can choose this.  
-★★★☆☆ Okay, if I have curiosity or feeling good, I will choose this.  
-★★☆☆☆ hmmm, if I am hungry, I can eat though..   
+★★★★★ This is a menu I can trust. On days when this is available, there's no need to look at other menus.     
+★★★★☆ Good taste, totally not bad, I choose this if no any other good choice.  
+★★★☆☆ Okay, When I'm feeling adventurous or having a good day, I think I can choose this.  
+★★☆☆☆ When I'm extremely hungry, I might allow myself to eat this.     
 ★☆☆☆☆ Definitely I will NOT order again. It made my bad day.     
 
 ## Rough introductions
