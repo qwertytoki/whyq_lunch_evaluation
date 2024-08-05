@@ -1,6 +1,7 @@
 # whyq_lunch_evaluation
 
 evaluate weekly lunch to improve our lunch choice.  
+Note: Definitely we don't have great lunch. Only we have is "accepted" lunch. so the review score should be like following:  
 
 ★★★★★ This is a menu I can trust. On days when this is available, there's no need to look at other menus.     
 ★★★★☆ Good taste, totally not bad, I choose this if no any other good choice.  
