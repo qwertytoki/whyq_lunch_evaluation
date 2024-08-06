@@ -15,7 +15,10 @@ export class MenuService {
     async getMenuDetails(menuName: string): Promise<MenuDetail | undefined> {
         const menu = await menuDataAccess.getMenuItemsByName(menuName);
         const reviews = await reviewDataAccess.getReviewByMenuName(menuName);
-        const reviewComments = reviews.map((review) => review.reviewComment);
+        const reviewComments = reviews
+            .map((review) => review.reviewComment)
+            .filter((comment) => comment.trim() !== '');
+
         if (menu) {
             return new MenuDetail(
                 menu.name,
