@@ -27,7 +27,10 @@ export class MenuService {
         }
     }
 
-    async getDailyLunchMenus(dateString: string): Promise<DailyLunchMenus> {
-        return await menuDataAccess.getDailyLunchMenus(dateString);
+    async getDailyLunchMenus(
+        dateString: string,
+        sort: string,
+    ): Promise<DailyLunchMenus> {
+        return await menuDataAccess.getDailyLunchMenus(dateString, sort);
     }
 }

@@ -23,7 +23,7 @@ const ReviewPage: React.FC = () => {
   const fetchDailyMenu = async (date: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/menu/daily?date=${date}`,
+        `${process.env.REACT_APP_API_BASE_URL}/menu/daily?date=${date}&sort=alphabet`,
       );
       setDailyMenu(response.data.menus);
     } catch (error) {
@@ -153,7 +153,7 @@ const ReviewPage: React.FC = () => {
             type="range"
             min="1.0"
             max="5.0"
-            step="0.1"
+            step="0.5"
             value={reviewScore}
             onChange={handleSliderChange}
             className={styles.slider}
@@ -175,12 +175,24 @@ const ReviewPage: React.FC = () => {
       </div>
       {showMessage && <SubmitMessage message="Submitted!" />}
       <div className={styles.ratingDescriptions}>
-        <p>★★★★★ This is a menu I can trust. On days when this is available, there&apos;s no need to look at other menus.</p>
-        <p>★★★★☆ Good taste, totally not bad, I choose this if no any other good choice.</p>
-        <p>★★★☆☆ Okay, When I&apos;m feeling adventurous or having a good day, I think I can choose this.</p>
-        <p>★★☆☆☆ When I&apos;m extremely hungry, I might allow myself to eat this.</p>
+        <p>
+          ★★★★★ This is a menu I can trust. On days when this is available,
+          there&apos;s no need to look at other menus.
+        </p>
+        <p>
+          ★★★★☆ Good taste, totally not bad, I choose this if no any other good
+          choice.
+        </p>
+        <p>
+          ★★★☆☆ Okay, When I&apos;m feeling adventurous or having a good day, I
+          think I can choose this.
+        </p>
+        <p>
+          ★★☆☆☆ When I&apos;m extremely hungry, I might allow myself to eat
+          this.
+        </p>
         <p>★☆☆☆☆ Definitely I will NOT order again. It made my bad day.</p>
-    </div>
+      </div>
     </div>
   );
 };

@@ -26,7 +26,9 @@ const MenuPage: React.FC = () => {
 
   const fetchDailyMenu = async (date: string) => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/menu/daily?date=${date}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/menu/daily?date=${date}&sort=score`,
+      );
       setDailyMenu(response.data);
     } catch (error) {
       console.error('Error fetching daily menu:', error);

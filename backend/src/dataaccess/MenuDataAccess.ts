@@ -63,7 +63,10 @@ export class MenuDataAccess {
         return menus;
     }
 
-    async getDailyLunchMenus(dateString: string): Promise<DailyLunchMenus> {
+    async getDailyLunchMenus(
+        dateString: string,
+        sort: string = 'alphabet',
+    ): Promise<DailyLunchMenus> {
         const snapshot = await firestore
             .collection('dailyLunchMenus')
             .where('date_string', '==', dateString)
@@ -73,7 +76,12 @@ export class MenuDataAccess {
         }
         const menuNames = snapshot.docs.map((doc) => doc.data().menu_name);
         const menus = await this.getMenuItemsByNames(menuNames);
-        const sortedMenus = menus.sort((a, b) => b.reviewScore - a.reviewScore);
+        let sortedMenus;
+        if (sort === 'score') {
+            sortedMenus = menus.sort((a, b) => b.reviewScore - a.reviewScore);
+        } else {
+            sortedMenus = menus.sort((a, b) => a.name.localeCompare(b.name));
+        }
         return new DailyLunchMenus(dateString, sortedMenus);
     }
 
