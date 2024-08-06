@@ -174,6 +174,13 @@ const ReviewPage: React.FC = () => {
         </button>
       </div>
       {showMessage && <SubmitMessage message="Submitted!" />}
+      <div className={styles.ratingDescriptions}>
+        <p>★★★★★ This is a menu I can trust. On days when this is available, there's no need to look at other menus.</p>
+        <p>★★★★☆ Good taste, totally not bad, I choose this if no any other good choice.</p>
+        <p>★★★☆☆ Okay, When I'm feeling adventurous or having a good day, I think I can choose this.</p>
+        <p>★★☆☆☆ When I'm extremely hungry, I might allow myself to eat this.</p>
+        <p>★☆☆☆☆ Definitely I will NOT order again. It made my bad day.</p>
+      </div>
     </div>
   );
 };
